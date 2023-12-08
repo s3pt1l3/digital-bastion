@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from articles.views import articles_list, aticle_get, article_post
 from accounts.views import register_user, user_login, user_logout
+from mails.views import mail_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,4 +14,6 @@ urlpatterns = [
     path('api/register/', register_user, name='register'),
     path('api/login/', user_login, name='login'),
     path('api/logout/', user_logout, name='logout'),
+    
+    path('api/mail/file=<str:file>&email=<str:email>', mail_post),
 ]
